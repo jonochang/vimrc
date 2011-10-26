@@ -68,6 +68,12 @@ map <C-y> :FufCoverageFile<CR>
 
 autocmd BufRead,BufNewFile *.js,*.json setlocal makeprg=jslint\ --vim\ \%
 
+" For Autocomplete plugin
+" Search in all buffers
+let g:acp_completeOption=".,w,b,u,t,i"
+" and DONT ignore case
+let g:acp_ignorecaseOption=0
+
 " -----------------------------------------------------------------------------  
 " |                               Startup                                     |
 " -----------------------------------------------------------------------------  
