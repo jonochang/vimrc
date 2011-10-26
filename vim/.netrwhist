@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/kirillvr/works/simple_form-bootstrap/app'
-let g:netrw_dirhist_2='/home/kirillvr/bluechiip/stream'
-let g:netrw_dirhist_3='/home/kirillvr/Downloads/plugin'
+let g:netrw_dirhist_1='/home/jono/projects/clients/tsfn/tsfn/src/dogfood'
+let g:netrw_dirhist_2='/home/jono/projects/clients/carlins/CarlinsFleet/src/peach'
+let g:netrw_dirhist_3='/home/jono/projects/clients/tsfn/tsfn/src/tsfn_prototype5'
