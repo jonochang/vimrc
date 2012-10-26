@@ -1,7 +1,7 @@
 " Begin /etc/vimrc
 " This vimrc was written by Kirill R
 
-filetype on
+filetype plugin on
 
 " Indenting *******************************************************************
 set ai " Automatically set the indent of a new line (local to buffer)
@@ -62,17 +62,38 @@ set hlsearch
   set background=dark
 "endif
 
+" use xterm if gnu screen ****************************************************
+
+if match($TERM, "screen")!=-1
+  set term=xterm
+  let g:GNU_Screen_used = 1
+else
+  let g:GNU_Screen_used = 0
+endif
+
+" Screen-ify an external command.
+function InScreen(command)
+  return g:GNU_Screen_used ? 'screen '.a:command : a:command
+endfunction
+
+" key mappings ***************************************************************
+
 map <F2> :NERDTreeToggle<CR>
 
 map <C-y> :FufCoverageFile<CR>
 
+map <F4> :execute " grep -srnw --binary-files=without-match  . -e " . expand("<cword>") . " " <bar> cwindow<CR>
+
 autocmd BufRead,BufNewFile *.js,*.json setlocal makeprg=jslint\ --vim\ \%
 
-" For Autocomplete plugin
-" Search in all buffers
-let g:acp_completeOption=".,w,b,u,t,i"
-" and DONT ignore case
-let g:acp_ignorecaseOption=0
+" use ghc functionality for haskell files
+au Bufenter *.hs compiler ghc
+
+" configure browser for haskell_doc.vim
+let g:haddock_browser = "/usr/bin/google-chrome"
+let g:haddock_docdir="/usr/local/share/doc/ghc/html/"
+let g:haddock_indexfiledir="~/.vim/"
+let g:wget="/usr/bin/wget"
 
 " -----------------------------------------------------------------------------  
 " |                               Startup                                     |
